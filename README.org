@@ -1,0 +1,10 @@
+#+TITLE: Quantum Chromodynamics
+#+AUTHOR: Alexander Huss
+#+STARTUP: showall
+#+LATEX_HEADER: \usepackage[a4paper]{geometry}
+#+LATEX_HEADER: \usepackage{mathtools}
+
+This repository contains the slides and source files for the lectures on *"Quantum Chromodynamics"* given at the [[https://physicsschool.web.cern.ch/][CERN School of High-Energy Physics]].
+- [[https://indico.cern.ch/event/1467690/][2025 CERN Latin-American School of High-Energy Physics]]
+
+I use [[https://orgmode.org/][Org Mode]] for the notebooks collected in the =notebooks= folder.

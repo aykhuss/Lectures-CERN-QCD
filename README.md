@@ -1,1 +1,0 @@
-# Lectures-CERN-QCD
