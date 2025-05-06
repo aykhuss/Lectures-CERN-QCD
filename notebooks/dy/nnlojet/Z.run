@@ -1,0 +1,58 @@
+!###############################################!
+!##                                           ##!
+!##     _  ___  ____   ____     ____________  ##!
+!##    / |/ / |/ / /  / __ \__ / / __/_  __/  ##!
+!##   /    /    / /__/ /_/ / // / _/  / /     ##!
+!##  /_/|_/_/|_/____/\____/\___/___/ /_/      ##!
+!##                                           ##!
+!##                                RUNCARD    ##!
+!###############################################!
+
+
+PROCESS  Z
+  collider = pp
+  sqrts = 8000
+END_PROCESS
+
+
+RUN  Z_test
+  PDF = NNPDF31_nnlo_as_0118_luxqed[0]
+  multi_channel = -2
+  iseed   = 1
+  production = 123[auto]
+END_RUN
+
+
+PARAMETERS
+END_PARAMETERS
+
+
+SELECTORS
+  select  mll     min = 80    max = 100
+  ! select  abs_yz  max = 3.6
+END_SELECTORS
+
+
+HISTOGRAMS
+
+  abs_yz  min=0  max=3.6  nbins=9
+
+END_HISTOGRAMS
+
+
+SCALES
+
+  mur = 1   * mll  muf = 1   * mll
+  mur = 2   * mll  muf = 2   * mll
+  mur = 0.5 * mll  muf = 0.5 * mll
+  mur = 2   * mll  muf = 1   * mll
+  mur = 1   * mll  muf = 2   * mll
+  mur = 0.5 * mll  muf = 1   * mll
+  mur = 1   * mll  muf = 0.5 * mll
+
+END_SCALES
+
+
+CHANNELS
+  LO
+END_CHANNELS
