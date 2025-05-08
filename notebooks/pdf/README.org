@@ -41,7 +41,7 @@ for ix, x in enumerate(xs):
 return res.tolist()
 #+end_src
 
-#+begin_src gnuplot :var data=lhapdf_xfx(100,1) :var fac=1e-2 :file pdf_xfx.png
+#+begin_src gnuplot :var data=lhapdf_xfx(10,1) :var fac=1e-2 :file pdf_xfx.png
 reset
 set terminal pngcairo
 set log x
@@ -112,7 +112,7 @@ return res
 
 * Momentum sum rules
 The parton $a$ carries a momentum fraction $x_a$ of the parent hadron, $p_a^\mu=x_a\,P^\mu$.
-Therefore, the momentum density associated with that parton is given by $x_a\,f_{a\vert H}(x_a).
+Therefore, the momentum density associated with that parton is given by $x_a\,f_{a\vert H}(x_a)$.
 Since the sum over all parton momenta must sum back up to the parent hadron one, the PDF sets satisfy a /momentum sum rule/ (in $\overline{\text{MS}}$):
 \begin{align}
   \sum_a \int_0^1 \mathrm{d}x_a \; x_a\,f_{a\vert H}(x_a)
