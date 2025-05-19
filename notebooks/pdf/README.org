@@ -160,3 +160,6 @@ The up quark, with $\sim20\%$, has the second largest contribution, followed by 
 - Vary the scale and see how the momentum composition of the proton changes.
   How robust are the numbers?
 #+end_quote
+
+* Comparison of PDF sets
+todo

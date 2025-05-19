@@ -1,4 +1,4 @@
-% Created 2025-05-08 Thu 13:39
+% Created 2025-05-19 Mon 10:22
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -23,7 +23,7 @@
  pdftitle={Parton Distribution Functions},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 30.1 (Org mode 9.7.27)}, 
+ pdfcreator={Emacs 30.1 (Org mode 9.7.29)}, 
  pdflang={English}}
 \usepackage{biblatex}
 
@@ -33,10 +33,10 @@
 \tableofcontents
 
 \section{Introduction}
-\label{sec:orgc33aa7e}
+\label{sec:org55ee7b9}
 We will call the \href{https://lhapdf.hepforge.org/}{LHAPDF} library from python to evaluate parton distribution functions and play around with them a bit.
 \section{Evaluating PDFs}
-\label{sec:orgbc10c1d}
+\label{sec:orgc0b8d06}
 Let's have a look at one specific PDF set \texttt{PDF4LHC21\_40}
 
 \begin{minted}[frame=lines,fontsize=\scriptsize]{python}
@@ -80,7 +80,7 @@ Does it correspond to the expectation of the QCD improved parton model?
 \end{itemize}
 \end{quote}
 \section{The quantum numbers of the proton}
-\label{sec:org06d2df2}
+\label{sec:orge6a0495}
 The quantum numbers of the proton are determined by the valence quarks, p=(uud).
 Given that PDFs are \emph{number densities} for the constituent partons, the following flavour sum rules hold:
 \begin{align}
@@ -128,7 +128,7 @@ b & -8.819432616746102e-05\\
 \end{tabular}
 \end{table}
 \section{Momentum sum rules}
-\label{sec:orgb14eb92}
+\label{sec:org7fcf3c1}
 The parton \(a\) carries a momentum fraction \(x_a\) of the parent hadron, \(p_a^\mu=x_a\,P^\mu\).
 Therefore, the momentum density associated with that parton is given by \(x_a\,f_{a\vert H}(x_a)\).
 Since the sum over all parton momenta must sum back up to the parent hadron one, the PDF sets satisfy a \emph{momentum sum rule} (in \(\overline{\text{MS}}\)):
@@ -184,4 +184,7 @@ The up quark, with \(\sim20\%\), has the second largest contribution, followed b
 How robust are the numbers?
 \end{itemize}
 \end{quote}
+\section{Comparison of PDF sets}
+\label{sec:orge614181}
+todo
 \end{document}

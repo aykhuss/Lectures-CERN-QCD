@@ -1,4 +1,4 @@
-% Created 2025-05-03 Sat 22:44
+% Created 2025-05-19 Mon 10:55
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -23,7 +23,7 @@
  pdftitle={NLO calculations: Subtraction and Slicing},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 30.1 (Org mode 9.7.27)}, 
+ pdfcreator={Emacs 30.1 (Org mode 9.7.29)}, 
  pdflang={English}}
 \usepackage{biblatex}
 
@@ -33,12 +33,12 @@
 \tableofcontents
 
 \section{Introduction}
-\label{sec:org5c18b2d}
+\label{sec:orgf425627}
 Let us study a simple toy example for an NLO calculation and investigate what challenges arise in the context of fully differential predictions.
 We will further have a look at two strategies to implement the IRC calcellation differentially: local subtractions and slicing.
 These will be contrasted in their respective properties and performance.
 \section{Inclusive calculation}
-\label{sec:org5787826}
+\label{sec:org9d3d152}
 Let us first set the stage by considering our toy example in an \emph{inclusive} setup, i.e. where we have no restrictions on the phase space whatsoever (think: total cross section).
 We use dimensional regularization (\(D=4-2\epsilon\)) to regulate all divergences and will drop all terms \(\mathcal{O}(\epsilon)\) in the expressions that follow.
 We further assume that the Born kinematics is fully constraint such that they do not involve any integration.
@@ -69,7 +69,7 @@ We can appreciate how the singularities (poles in \(\epsilon\)) cancel between t
   a+b
 \end{align}
 \section{Differential predictions}
-\label{sec:org05be342}
+\label{sec:org6e52e64}
 In a differential setup we want to admit arbitraty (IRC safe) measurement functions to act on the phase space.
 Since in this simple toy example the Born phase space is fully constrained, this means we have to allow for an arbitrary function to appear in the integrand of the real corrections and the virtual piece only gets multiplied by that function in the Born limit, i.e. \(x\equiv0\).
 In summary, the pieces we need to evaluate are, c.f. Eq. \eqref{eq:inc},
@@ -93,7 +93,7 @@ The main challenge we then face is that the real-emission integral is actually d
 To expose the singularity, we need to perform some (partial) integration of the real-emission phase space, but at the same time we want to remain fully differential in the kinematics, i.e. want to keep the integration in tact.
 These seemingly contradicting requirements are what is sloved using so-called \emph{subtraction methods}, which rearrange the divergences so we end up with only well-defined (finite) integrals that we can do numerically.
 \subsection{Local Subtraction}
-\label{sec:orgefbad1f}
+\label{sec:org4293b99}
 The local subtraction follows a very common strategy in solving physics problems: find a suitable prarametrisation of a zero.
 We essentially subtract something differentially and add the same quantity back in integrated form.
 For this to work, we need a very good understanding of how the singularities arise in our calculations.
@@ -129,7 +129,7 @@ Combining this with the virtual corrections, we can appreciate how a local subtr
   \;\Big[\mathcal{J}(x) - \mathcal{J}(0)\Bigr]
 \end{align}
 \subsubsection{Implementation}
-\label{sec:orgacad494}
+\label{sec:orgd1f9853}
 The implementation of \eqref{eq:subtr} in a python function is straighforward.
 We choose the VEGAS algorithm to integrate the real-emission ``phase space'' and give the number of calls (events) as an argument so we can compare the performance later
 \begin{minted}[frame=lines,fontsize=\scriptsize]{python}
@@ -145,7 +145,7 @@ def subtr_dNLO(ncall: int) -> tuple[float, float]:
     return ((a + b) * J(0) + result.mean, result.sdev)
 \end{minted}
 \subsection{Non-Local Subtraction: Slicing}
-\label{sec:orga329538}
+\label{sec:org76fe3de}
 In a non-local subtraction, or \emph{slicing} approach, one exploits the fact that the divergence can be isolated with some resolution variable on which we place a cut to regulate the divergence.
 It is important to note that slicing methods are not ``exact'' but come with an error that must be controlled and estimated.
 
@@ -191,7 +191,7 @@ dependence and an associated error
   + \mathcal{O}(\xi^n)
 \end{align}
 \subsubsection{Implementation}
-\label{sec:orga3cc207}
+\label{sec:org7dd2733}
 The implementation of \eqref{eq:slice} in a python function is analogous to the subtraction case above.
 This time, we also have the cutoff parameter \(\xi\) as an argument as we'll want to vary it and see how the errors change.
 \begin{minted}[frame=lines,fontsize=\scriptsize]{python}
@@ -210,7 +210,7 @@ def slice_dNLO(xi: float, ncall: int) -> tuple[float, float]:
     return ((a + math.log(xi)) * J(0) + result.mean, result.sdev)
 \end{minted}
 \section{Playground}
-\label{sec:org668a1e5}
+\label{sec:orgc4ace92}
 Let us export the two approaches we introduced above and compare their performance.
 For simplicity we'll set the constants in the virtual and real corrections to one
 \begin{minted}[frame=lines,fontsize=\scriptsize]{python}
@@ -246,7 +246,7 @@ def J(x: float) -> float:
 \end{itemize}
 \end{quote}
 \subsection{Export source code}
-\label{sec:org6692948}
+\label{sec:org9e9ebc1}
 We can export the python source code to a file \texttt{main.py}:
 \begin{minted}[frame=lines,fontsize=\scriptsize]{python}
 import math

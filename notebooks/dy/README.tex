@@ -1,4 +1,4 @@
-% Created 2025-05-06 Tue 05:37
+% Created 2025-05-19 Mon 10:57
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -23,7 +23,7 @@
  pdftitle={The Drell--Yan process: \(\mathrm{p}\mathrm{p} \to \ell^+\ell^-\)},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 30.1 (Org mode 9.7.27)}, 
+ pdfcreator={Emacs 30.1 (Org mode 9.7.29)}, 
  pdflang={English}}
 \usepackage{biblatex}
 
@@ -33,14 +33,14 @@
 \tableofcontents
 
 \section{Introduction}
-\label{sec:org45352f2}
+\label{sec:orgc830f5d}
 We will implement the process \(\mathrm{p}\mathrm{p} \to \ell^+\ell^-\).
 This gives us access to a simple hadron-collider process that constitutes a ``Standard Candle'' at the LHC and has a wide range of applications.
 \section{Cross section}
-\label{sec:org9a9b230}
+\label{sec:orgb34fd6b}
 
 \subsection{Partonic cross section}
-\label{sec:orge98754e}
+\label{sec:org2b35513}
 
 The squared Matrix Element is essentially the same as the one we looked at in the \(\mathrm{e}^+\mathrm{e}^- \to \mu^+ \mu^-\) case.
 To make life a little easier for us, we integrated out the kinematics of the \(\mathrm{Z}/\gamma^*\to\ell^+\ell^-\) system.
@@ -87,7 +87,7 @@ that we can use to assemble the \emph{partonic} cross section:
   \biggr\}
 \end{align}
 \subsubsection{Implementation}
-\label{sec:org6e251ba}
+\label{sec:org5fabc15}
 We'll use a simple class to save and retrieve Standard Model parameters including some convenience functions.
 We next implement the different structure functions (we need the additional quark id \texttt{qid} to distinguish up-type from down-type quarks as they have different couplings to the Z boson.
 \begin{minted}[frame=lines,fontsize=\scriptsize]{python}
@@ -114,7 +114,7 @@ def cross_partonic(shat: float, qid: int, par=PARAM) -> float:
     )
 \end{minted}
 \subsection{Hadronic cross section and lepton-pair observables}
-\label{sec:orgd827e5d}
+\label{sec:org4fe446c}
 The hadronic cross section is obtained by convoluting the partonic one with the parton distribution functions:
 \begin{align}
   \sigma_{A B \to \ell^+\ell^-} (P_A, P_B)
@@ -140,7 +140,7 @@ Being differential in these two observables, we're left with no more integration
   \;\bigg\vert_{x_{a/b}\equiv\tfrac{M_{\ell\ell}}{E_\mathrm{cm}}\mathrm{e}^{\pm Y_{\ell\ell}}}
 \end{align}
 \subsubsection{Implementation}
-\label{sec:org746fb01}
+\label{sec:org7e225a6}
 Let's implement the hadronic differential cross section
 \begin{minted}[frame=lines,fontsize=\scriptsize]{python}
 def diff_cross(Ecm: float, Mll: float, Yll: float, par=PARAM) -> float:
@@ -168,10 +168,10 @@ def diff_cross(Ecm: float, Mll: float, Yll: float, par=PARAM) -> float:
         )
 \end{minted}
 \section{Playground}
-\label{sec:org7bb01b4}
+\label{sec:orgd10d367}
 
 \subsection{Export source code}
-\label{sec:org074d9bd}
+\label{sec:org858ccd8}
 We can export the python source code to a file \texttt{main.py}:
 \begin{minted}[frame=lines,fontsize=\scriptsize]{python}
 import lhapdf
@@ -297,7 +297,7 @@ by using the \texttt{tangle} command
 (org-babel-tangle)
 \end{minted}
 \subsection{Comparison to data}
-\label{sec:org9673730}
+\label{sec:org7d71f5b}
 There is a recent ATLAS measurement \href{https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/CONFNOTES/ATLAS-CONF-2023-013/}{ATLAS-CONF-2023-013} that is inclusive in the lepton kinematics and thus suitable for performing a simple comparison here.
 Let's execute our code that we exported above and save the output to a file
 \begin{minted}[frame=lines,fontsize=\scriptsize]{shell}
@@ -336,8 +336,8 @@ We can also have a look at the invariant-mass distribution (no ATLAS result for 
 \label{}
 \end{center}
 We can see a similar picture of the photon pole and the Z-boson resonance as in the lepton collider example.
-\subsection{Higher-order predicitons predictions}
-\label{sec:org2f93c92}
+\subsection{Higher-order predictions}
+\label{sec:orgdca2a4a}
 In the subfolder \texttt{nlo}, you can find the corresponding implementation at NLO.
 The agreement with the data is significantly improved by including the next order.
 However, we also observe that the residual theory uncertainties are still larger by almost a factor of two compared to the data.

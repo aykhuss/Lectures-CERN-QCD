@@ -1,4 +1,4 @@
-% Created 2025-05-06 Tue 06:48
+% Created 2025-05-19 Mon 10:54
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -24,7 +24,7 @@
  pdftitle={Transverse Momentum Resummation},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 30.1 (Org mode 9.7.27)}, 
+ pdfcreator={Emacs 30.1 (Org mode 9.7.29)}, 
  pdflang={English}}
 \usepackage{biblatex}
 
@@ -34,11 +34,11 @@
 \tableofcontents
 
 \section{Introduction}
-\label{sec:org375d538}
+\label{sec:orgcf614a9}
 In the lectures we have seen a brief overview of the \(q_T\) resummation formalism for the Drell-Yan process.
 We will have a closer look at the main results here and highlight some features.
 \section{\(q_T\) resummation}
-\label{sec:org9242655}
+\label{sec:orga2b807b}
 In the leading double-logarithmic approximation, we have found the following result in impact parameter space
 \begin{align}
 \label{eq:b-space}
@@ -53,10 +53,10 @@ In the leading double-logarithmic approximation, we have found the following res
 where we have completely ignored effects from sub-leading logarithms, the running of the strong coupling, and parton distributions functions.
 Nonetheless, this simple formula already allows us to inspect some important features of \(q_T\) resummation, which we will inspect in the following.
 \section{Implementation}
-\label{sec:orgde9aecd}
+\label{sec:org641ec29}
 We start with a simple implementation of the above formula.
 \subsection{Python}
-\label{sec:orga30524f}
+\label{sec:org6cf6922}
 The integral is a bit nasty because of the oscillating behaviour of the Bessel function \(J_0\) so we need to adjust the \texttt{scipy.integrate} settings a little bit to reach a desired accuracy.
 Despite that, the implementation is straightforward:
 \begin{minted}[frame=lines,fontsize=\scriptsize]{python}
@@ -119,7 +119,7 @@ python main.py  91 q > data_dy.dat
 python main.py 125 g > data_h.dat
 \end{minted}
 \subsection{Mathematica}
-\label{sec:org886b734}
+\label{sec:orga513846}
 To cross-check the numerics, we can use a simple Mathematica implementation
 \begin{minted}[frame=lines,fontsize=\scriptsize]{wolfram}
 dSigQT2[qt_] := Module[{cf = 4/3, as = 0.118, q = 91},
@@ -129,10 +129,10 @@ datQT2 = Table[{qt, dSigQT2[qt]}, {qt, 10^Range[-4, 2, 0.1]}]
 Export["mma_dy.dat", datQT2, "Table", "FieldSeparators" -> " "]
 \end{minted}
 \section{Playground}
-\label{sec:orgb690ba2}
+\label{sec:org9e6b498}
 
 \subsection{Low-\(q_T^2\) behaviour}
-\label{sec:org6bbd93e}
+\label{sec:org5485da5}
 Let us have a look at the analytic expression for \(\mathrm{d}\sigma/\mathrm{d}q_T^2\) in the leading double-logarithmic approximation in momentum space.
 \begin{align}
   \frac{1}{\sigma_0}\,\frac{\mathrm{d}\sigma}{\mathrm{d}q_T^2}
@@ -169,7 +169,7 @@ In fact, we can compute what this intercept is
 We have also superimposed a dotted line obtained from the Mathematica implementation, which is in good agreement so numerics appear to be under good control in the relevant regions.
 At high \(q_T\), the oscillations become very severe rendering the Python predictions less reliable (with larger integration errors).
 \subsection{Transverse Momentum Distributioins}
-\label{sec:orgb84df7c}
+\label{sec:orge70ecd7}
 We now look at the transverse momentum distribution, which we simply get by
 \begin{align}
   \frac{\mathrm{d}\sigma}{\mathrm{d}q_T}

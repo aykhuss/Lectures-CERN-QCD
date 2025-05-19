@@ -1,4 +1,4 @@
-% Created 2025-05-08 Thu 13:37
+% Created 2025-05-19 Mon 10:17
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -23,7 +23,7 @@
  pdftitle={Feynman diagrams},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 30.1 (Org mode 9.7.27)}, 
+ pdfcreator={Emacs 30.1 (Org mode 9.7.29)}, 
  pdflang={English}}
 \usepackage{biblatex}
 
@@ -33,11 +33,11 @@
 \tableofcontents
 
 \section{Introduction}
-\label{sec:org6386c03}
+\label{sec:org78486ae}
 Let's have some fun with Feynman diagrams; we'll use the tool \texttt{qgraf} for their generation.
 If you want to reproduce the results in this document, you can get the source from here: \href{https://cfif.ist.utl.pt/\~paulo/qgraf.html}{qgraf} (note that you'll need a \texttt{Fortran} compiler for this).
 \section{Drell--Yan}
-\label{sec:org269231e}
+\label{sec:org293712d}
 Let's start simple and see how we can generate the diagrams for the Drell-Yan process that we already know.
 The example files are located in \texttt{../../tools/qgraf/dy} and the program is controlled using the input file \texttt{qgraf.dat}.
 In this example, the Feynman rules are encoded in a simple model file \texttt{dyqcd} and the output style is set by \texttt{custom.sty}.
@@ -90,7 +90,7 @@ This will generate the output inside the file \texttt{qlist.out}:
 \end{verbatim}
 which are precisely the two s-channel diagrams we already know for this process.
 \section{Gluon scattering}
-\label{sec:orgbaf40f0}
+\label{sec:orgee436a8}
 We will now consider the case of \(2\to n\) gluon scattering, \(\mathrm{g}\mathrm{g} \to \mathrm{g}\ldots\mathrm{g}\).
 To make this more generic, we have a template file from which we generate an input file for \texttt{qgraf} to automatically excract the number of diagrams \texttt{qgraf} has generated for us.
 \begin{minted}[frame=lines,fontsize=\scriptsize]{shell}

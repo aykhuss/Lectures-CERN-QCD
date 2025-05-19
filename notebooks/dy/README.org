@@ -301,7 +301,7 @@ plot "< awk '$1~/^#Mll/{print $2,$3}' DY.out" u 1:2 w lp t 'LO'
 [[file:Mll.png]]
 We can see a similar picture of the photon pole and the Z-boson resonance as in the lepton collider example.
 
-** Higher-order predicitons predictions
+** Higher-order predictions
 In the subfolder ~nlo~, you can find the corresponding implementation at NLO.
 The agreement with the data is significantly improved by including the next order.
 However, we also observe that the residual theory uncertainties are still larger by almost a factor of two compared to the data.
